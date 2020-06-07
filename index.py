@@ -48,16 +48,6 @@ def create_task():
     db.session.commit()
     return get_tasks()
 
-    # title = request.json[
-    #     'title'
-    # ]
-    # description = request.json["description"]
-    # author = request.json["author"]
-    # new_task = Task(title, description, author)
-    # db.session.add(new_task)
-    # db.session.commit()
-    # return task_schema.jsonify(new_task)
-
 
 @app.route('/', methods=['GET'])
 def index():
@@ -96,16 +86,13 @@ def update_task(id):
 @app.route('/tasks/<int:id>', methods=['POST'])
 @app.route('/delete_tasks/<int:id>')
 def delete_task(id):
-    # description = request.form['description']
     Task.query.filter_by(id=int(id)).delete()
-    # no reconoce el metodo que se esta ejecutando en ese momento y se activa por defecto el get_tasks
-    # print("delete Task"+id)
     db.session.commit()
     return get_tasks()
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=3000)
+    app.run(debug=True)
 
 
 # pip install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy pymysql
