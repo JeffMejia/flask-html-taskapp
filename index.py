@@ -92,7 +92,7 @@ def delete_task(id):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, port=3000)
 
 
 # pip install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy pymysql
