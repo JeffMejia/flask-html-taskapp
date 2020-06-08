@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
@@ -58,37 +58,36 @@ def index():
 def get_tasks():
     all_tasks = Task.query.all()
     result = tasks_schema.dump(all_tasks)
-    # return jsonify(result)
     return render_template('all_tasks.html', tasks=result, title="Task App")
 
 
-@app.route('/tasks/<int:id>', methods=['GET'])
+@app.route('/task/<int:id>', methods=['GET'])
 def get_task(id):
-    task = task_schema.jsonify(Task.query.get(id))
-    return task
+    task = Task.query.get(id)
+    return render_template('edit_task.html', task=task, title="Edit Task")
 
 
-@app.route('/tasks/<int:id>', methods=['PUT'])
+@app.route('/edit/<int:id>', methods=['POST'])
 def update_task(id):
     task = Task.query.get(id)
-    title = request.json['title']
-    description = request.json['description']
-    author = request.json['author']
+
+    title = request.form['title']
+    description = request.form['description']
+    author = request.form['author']
 
     task.title = title
     task.description = description
     task.author = author
 
     db.session.commit()
-    return task_schema.jsonify(task)
+    return redirect('/tasks')
 
 
-@app.route('/tasks/<int:id>', methods=['POST'])
-@app.route('/delete_tasks/<int:id>')
+@app.route('/delete/<int:id>', methods=['POST'])
 def delete_task(id):
     Task.query.filter_by(id=int(id)).delete()
     db.session.commit()
-    return get_tasks()
+    return redirect('/tasks')
 
 
 if __name__ == "__main__":

@@ -1,0 +1,31 @@
+{% extends 'layout/layout.html'%}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-sm pt-1">
+            </div>
+            <div class="col-sm md-4 pt-8">
+                <div class="card md-8">
+                    <form action="/edit/{{task.id}}" method="POST" class="formcontrol">
+                        <h4 class="card-title text-center mt-4">Edit TODO:</h4>
+                        <hr>
+                        <div class="formTask m-4">
+                            <input name="title" type="text" value="{{task.title}}" class="form-control">
+                            <input name="description" value="{{task.description}}" rows="4" cols="40"
+                                class="form-control">
+                            <input type="text" name="author" value="{{task.author}}" class="form-control">
+                            <hr>
+                            <button class="btn btn-primary btn-block" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm pt-1">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}

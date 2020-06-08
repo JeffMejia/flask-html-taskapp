@@ -2,12 +2,13 @@
 {%block tasks%}
 
 {% for task in tasks %}
-<form action="/tasks/{{task.id}}" method="POST" class="formcontrol">
+<form action="/delete/{{task.id}}" method="POST" class="formcontrol">
     <div class=" card border my-2 px-2">
         <div class="card-header">
             <div class="row">
                 <h5 class="col">{{task.title}}</h5>
                 <!-- <a href="/delete_tasks/{{task.id}}" method="DELETE" class="col-mx-auto btn btn-outline-danger">Delete</a> -->
+                <a href="/task/{{task.id}}" method="GET" class="btn btn-outline-success col-mx-auto">Edit</a>
                 <button type="submit" class="btn btn-outline-danger col-mx-auto">Delete</button>
             </div>
         </div>
