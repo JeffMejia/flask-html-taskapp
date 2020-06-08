@@ -36,6 +36,8 @@ class TaskSchema(ma.Schema):
 task_schema = TaskSchema()
 tasks_schema = TaskSchema(many=True)
 
+# TASK SECTION
+
 
 @app.route('/tasks', methods=['POST'])
 def create_task():
@@ -90,10 +92,21 @@ def delete_task(id):
     return redirect('/tasks')
 
 
+# USER SECTION
+
+
+@app.route("/users")
+def get_Users():
+    return render_template("users.html", title="Users")
+
+
+# ABOUT SECTION
+
+
+@app.route("/about")
+def about():
+    return render_template('about.html', title="About")
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=3000)
-
-
-# pip install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy pymysql
-# pip install ng
-# pip install Jinja2

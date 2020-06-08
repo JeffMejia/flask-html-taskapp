@@ -1,0 +1,20 @@
+{%extends 'layout/layout.html'%}
+{%block content%}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">About</h1>
+        <p class="lead">This is a small app to practice with flask, boostrap and SQLAlchemy</p>
+        <p class="text"><small class="text-muted">-Jeffry
+                Mejia</small></p>
+
+        <div class="container">
+            <hr>
+
+            <a class="col" alt="go to Jeffry's Github profile" href="https://github.com/JeffMejia" target="_blank">
+                <img src="{{url_for('static', filename='img/GitHub-Mark-32px.png')}}" />
+            </a>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

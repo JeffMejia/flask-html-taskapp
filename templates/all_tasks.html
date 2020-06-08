@@ -3,16 +3,17 @@
 
 {% for task in tasks %}
 <form action="/delete/{{task.id}}" method="POST" class="formcontrol">
-    <div class=" card border my-2 px-2">
-        <div class="card-header">
+    <div class=" card border my-1">
+        <div class="card-header py-1">
             <div class="row">
-                <h5 class="col">{{task.title}}</h5>
-                <!-- <a href="/delete_tasks/{{task.id}}" method="DELETE" class="col-mx-auto btn btn-outline-danger">Delete</a> -->
-                <a href="/task/{{task.id}}" method="GET" class="btn btn-outline-success col-mx-auto">Edit</a>
-                <button type="submit" class="btn btn-outline-danger col-mx-auto">Delete</button>
+                <h5 class="col md-1">{{task.title}}</h5>
+                <div class="">
+                    <a href="/task/{{task.id}}" method="GET" class="btn btn-outline-success col-mx-auto">Edit</a>
+                    <button type="submit" class="btn btn-outline-danger mr-2">Delete</button>
+                </div>
             </div>
         </div>
-        <div class="card-text px-4">
+        <div class="card-text px-4 pt-2">
             <p class="text">{{ task.description }}</p>
             <p class="text"><small class="text-muted">{{task.author}}</small></p>
         </div>

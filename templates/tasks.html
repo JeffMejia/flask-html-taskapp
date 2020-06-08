@@ -1,12 +1,14 @@
 {% extends 'layout/layout.html'%}
 {% block content %}
+
+<h4 class="title display-4 bg-light text-center p-4">Task App</h4>
 <div class="d-flex justify-content-center">
-    <div class="container">
+    <div class="container ">
         <div class="row pt-4">
             <div class="col-sm md-4 pt-8">
-                <div class="card md-8">
+                <div class="card md-8 shadow-lg p-3 mb-5 bg-white rounded">
                     <form action="/tasks" method="POST" class="formcontrol">
-                        <h4 class="card-title text-center mt-4">ToDo</h4>
+                        <h4 id="ta_title" class="card-title text-center mt-4">Add New Task</h4>
                         <hr>
                         <div class="formTask m-4">
                             <input name="title" type="text" value="" placeholder="Add a title..." class="form-control">
@@ -20,7 +22,7 @@
 
                 </div>
             </div>
-            <div id="AllTasks" class="card col-sm pt-1">
+            <div id="AllTasks" class="card col-sm pt-1 shadow-lg p-3 mb-5 bg-gray rounded">
                 <!-- <div class="overflow-auto"> -->
                 {%block tasks%} {%endblock%}
                 <!-- </div> -->
